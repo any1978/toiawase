@@ -10,12 +10,24 @@
 
 
 
-<%= form_with(model: Blog.new, local: true) do |form| %>
+<%= form_with(model: @blog, local: true) do |form| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
     <div class="blog_title">
       <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
-    <div class="blog_content">
+    <div class="blog_email">
         <%= form.label :email %>
         <%= form.text_field :email %>
     </div>
@@ -25,3 +37,5 @@
     </div>
     <%= form.submit %>
   <% end %>
+  <%= link_to 'お問合わせ一覧画面に戻る', blogs_path %>
+

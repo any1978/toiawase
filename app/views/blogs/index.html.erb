@@ -1,0 +1,16 @@
+<h1>問合せ一覧</h1>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>email</th>
+    <th>内容</th>
+  </tr>
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.name %></td>
+    <td><%= blog.email %></td>
+    <td><%= blog.content %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to '新しくお問合せする', new_blog_path %>
